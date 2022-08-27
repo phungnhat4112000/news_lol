@@ -1,0 +1,93 @@
+
+@extends("backend.layout")
+@section("do-du-lieu")
+ <div class="main-content position-relative bg-gray-100  h-100">
+ 
+            
+              
+      
+        <form method="post" enctype="multipart/form-data" action="{{ $action }}">
+             <!-- trong laravel, muon bat duoc du lieu thi co tag csrf() -->
+            <!-- viet tuong minh ham csrf(): <input type='hidden' name='csrf_token' value='...' -->
+            @csrf
+            <!-- rows -->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Name</div>
+                <div class="col-md-10">
+                    <input type="text" value="{{isset($record->name)?$record->name:''}}" name="name" class="form-control" required>
+                </div>
+            </div>
+            <!-- end rows -->
+            <!-- rows -->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Category</div>
+                <div class="col-md-10">
+                    <select name="category_id" class="form-control" style="width: 300px;">
+                        <?php 
+                            //trong laravel có thể truyền full câu lệnh sql để truy vấn 
+                            $categories = DB::select("select * from categories order by id desc");
+
+                         ?>
+                         @foreach($categories as $rows)
+
+
+                        <option @if(isset($record->category_id)&&$record->category_id==$rows->id) selected @endif value="{{ $rows->id }}">{{ $rows->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <!-- end rows -->
+            <!-- rows -->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Description</div>
+                <div class="col-md-10">
+                    <textarea name="description" id="description">
+                       
+                    </textarea>
+                    <script type="text/javascript">CKEDITOR.replace('description');</script>
+                </div>
+            </div>
+            <!-- end rows -->
+            <!-- rows -->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Content</div>
+                <div class="col-md-10">
+                    <textarea name="content" id="content">
+                         {{isset($record->content)?$record->content:''}}
+                    </textarea>
+                    <script type="text/javascript">CKEDITOR.replace('content');</script>
+                </div>
+            </div>
+            <!-- end rows -->
+            <!-- rows -->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2"></div>
+                <div class="col-md-10">
+                    <input type="checkbox" @if(isset($record->hot)) checked @endif name="hot" id="hot"> <label for="hot">Hot</label>
+                </div>
+            </div>
+            <!-- end rows -->
+            <!-- rows -->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Upload image</div>
+                <div class="col-md-10">
+                    <input type="file" name="photo">
+                </div>
+            </div>
+            <!-- end rows -->
+            <!-- rows -->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2"></div>
+                <div class="col-md-10">
+                    <input type="submit" value="Process" class="btn btn-primary">
+                </div>
+            </div>
+            <!-- end rows -->
+        </form>
+
+        </div>
+    
+
+ </div>
+
+ @endsection

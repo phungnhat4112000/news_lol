@@ -1,0 +1,143 @@
+[data-theme="dark"] {
+  background-color: #111 !important;
+  color: #eee;
+}
+
+[data-theme="dark"] .bg-black {
+  background-color: #fff !important;
+}
+
+[data-theme="dark"] .bg-dark {
+  background-color: #eee !important;
+}
+
+[data-theme="dark"] .bg-light {
+  background-color: #222 !important;
+}
+
+[data-theme="dark"] .bg-white {
+  background-color: #000 !important;
+}
+
+/* css custom */
+
+
+
+
+
+/*nút sreach*/
+
+.ip-sreach {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  
+  right: 17px;
+  bottom: 0;
+  width: 300px;
+  height: 100px;
+}
+.ip-sreach .search {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  background: crimson;
+  border-radius: 50%;
+  transition: all 1s;
+  z-index: 4;
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
+}
+
+.ip-sreach .search:hover {
+  cursor: pointer;
+}
+.ip-sreach .search::before {
+  content: "";
+  position: absolute;
+  margin: auto;
+  top: 22px;
+  right: 0;
+  bottom: 0;
+  left: 22px;
+  width: 12px;
+  height: 2px;
+  background: white;
+  transform: rotate(45deg);
+  transition: all .5s;
+}
+.ip-sreach .search::after {
+  content: "";
+  position: absolute;
+  margin: auto;
+  top: -5px;
+  right: 0;
+  bottom: 0;
+  left: -5px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 2px solid white;
+  transition: all .5s;
+}
+.ip-sreach input {
+  font-family: 'XBRoyaBold','Inconsolata', monospace;
+  position: absolute;
+  margin: auto;
+  text-align: left;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  outline: none;
+  border: none;
+  background: crimson;
+  color: white;
+  text-shadow: 0 0 10px crimson;
+  padding: 0 80px 0 20px;
+  border-radius: 30px;
+  box-shadow: 0 0 5px 0 crimson, 0 20px 25px 0 rgba(0, 0, 0, 0.2);
+  transition: all 1s;
+  opacity: 0;
+  z-index: 5;
+  font-weight: bolder;
+}
+.ip-sreach input:hover {
+  cursor: pointer;
+}
+.ip-sreach input:focus {
+  width: 300px;
+  opacity: 1;
+  cursor: text;
+}
+.ip-sreach input:focus ~ .search {
+  right: -250px;
+  background: #151515;
+  z-index: 6;
+}
+.ip-sreach input:focus ~ .search::before {
+  top: 0;
+  left: 0;
+  width: 25px;
+}
+.ip-sreach input:focus ~ .search::after {
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 2px;
+  border: none;
+  background: white;
+  border-radius: 0%;
+  transform: rotate(-45deg);
+}
+.ip-sreach input::placeholder {
+  color: white;
+  opacity: 0.5;
+  font-weight: bolder;
+}
